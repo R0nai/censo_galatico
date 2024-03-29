@@ -24,6 +24,20 @@ function createButtons(list) {
         let button = document.createElement('button');
         button.setAttribute('type','button');
         button.innerHTML = planet['name'];
+        button.addEventListener("click", function() {
+            displayPlanetInfo(planet)});
         buttons.appendChild(button);
     })
+}
+
+function displayPlanetInfo(planet) {
+    planetName = document.getElementById('planetName');
+    planetName.innerHTML = `Name: ${planet['name']}`;
+    planetClimate = document.getElementById('planetClimate');
+    planetClimate.innerHTML = `Climate: ${planet['climate']}`;
+    planetPopulation = document.getElementById('planetPopulation');
+    planetPopulation.innerHTML = `Population: ${planet['population']}`;
+    planetTerrain = document.getElementById('planetTerrain');
+    planetTerrain.innerHTML = `Terrain: ${planet['terrain']}`;
+    console.log(planet['name']);
 }
