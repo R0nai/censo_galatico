@@ -27,7 +27,7 @@ function createButtons(list) {
         button.addEventListener("click", function() {
             displayPlanetInfo(planet)});
         buttons.appendChild(button);
-    })
+    });
 }
 
 function displayPlanetInfo(planet) {
@@ -39,7 +39,8 @@ function displayPlanetInfo(planet) {
     planetPopulation.innerHTML = `Population: ${planet['population']}`;
     planetTerrain = document.getElementById('planetTerrain');
     planetTerrain.innerHTML = `Terrain: ${planet['terrain']}`;
-    console.log(planet['name']);
+    removeElementsFromUl();
+    printResidents(planet['residents']);
 }
 
 async function searchPlanet() {
@@ -50,4 +51,26 @@ async function searchPlanet() {
     document.getElementById("searchPlanetClimate").innerText = results[0]['climate'];
     document.getElementById("searchPlanetPopulation").innerText = results[0]['population'];
     document.getElementById("searchPlanetTerrain").innerText = results[0]['terrain'];
+}
+
+async function printResidents(residents) {
+    residents.forEach(resident => {
+        findResident(resident); 
+    });
+}
+
+async function findResident(resident) {
+    let res = await fetch(resident);
+    let result = await res.json();
+    let listOfResidents = document.getElementById('planetResidents');
+    let residentInfo = document.createElement('li');
+    residentInfo.innerHTML = `Ǹame: ${result['name']} , Birth Year: ${result['birth_year']}`;
+    listOfResidents.appendChild(residentInfo);
+}
+
+function removeElementsFromUl() {
+    let listOfResidents = document.getElementById("planetResidents");
+    while (listOfResidents.firstChild) {
+        listOfResidents.removeChild(listOfResidents.firstChild);
+    }
 }
