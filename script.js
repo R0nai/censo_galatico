@@ -41,3 +41,13 @@ function displayPlanetInfo(planet) {
     planetTerrain.innerHTML = `Terrain: ${planet['terrain']}`;
     console.log(planet['name']);
 }
+
+async function searchPlanet() {
+    let  searchWord = document.getElementById("searchInput").value;
+    let res = await fetch(`https://swapi.dev/api/planets/?search=${searchWord}`);
+    let {results} = await res.json();
+    document.getElementById("searchPlanetName").innerText = results[0]['name'];
+    document.getElementById("searchPlanetClimate").innerText = results[0]['climate'];
+    document.getElementById("searchPlanetPopulation").innerText = results[0]['population'];
+    document.getElementById("searchPlanetTerrain").innerText = results[0]['terrain'];
+}
