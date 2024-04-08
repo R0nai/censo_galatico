@@ -8,6 +8,10 @@
 </head>
 <body>
     <div id="planetButtons"></div>
+    <div>
+        <input type="text" id="searchInput">
+        <button onclick="searchPlanet()">Search a planet</button>
+    </div>
     <div id="planetInfo">
         <h2>Planet Info</h2>
         <p id="planetName"></p>
@@ -19,19 +23,7 @@
         </div>
         
     </div>
-    <div>
-        <input type="text" id="searchInput">
-        <button onclick="searchPlanet()">Search a planet</button>
-        <div id="searchResults">
-            <div id="searchPlanetInfo">
-                <h2>Search Planet Info</h2>
-                <p id="searchPlanetName"></p>
-                <p id="searchPlanetClimate"></p>
-                <p id="searchPlanetPopulation"></p>
-                <p id="searchPlanetTerrain"></p>
-            </div>
-        </div>
-    </div>
+    
     <script src="script.js"></script>
 </body>
 
